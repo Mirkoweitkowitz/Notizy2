@@ -11,4 +11,9 @@
     <color name="cyan">#00e5ff</color>
     <color name="green">#00c853</color>
     <color name="purple">#aa00ff</color>
+
+    <color name="primaryDark">#171c26</color>
+    <color name="secondaryDark">#171c26</color>
+
+    <color name="lightGreyDark">#3e434e</color>
 </resources>

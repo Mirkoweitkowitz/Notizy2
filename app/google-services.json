@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1066510549737",
+    "project_id": "notizy-2f742",
+    "storage_bucket": "notizy-2f742.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1066510549737:android:5116d4b744474e5acc2678",
+        "android_client_info": {
+          "package_name": "de.syntaxinsitut.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1066510549737-3k9aroddbhia5nsh1k2iluml5456lis0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "de.syntaxinsitut.myapplication",
+            "certificate_hash": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+          }
+        },
+        {
+          "client_id": "1066510549737-lnpos9eonldt05sb1iiino28147o1lot.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtxAeebQlbGgiRwo99k9dLomqBucfAd64"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1066510549737-lnpos9eonldt05sb1iiino28147o1lot.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

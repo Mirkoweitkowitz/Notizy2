@@ -39,7 +39,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/tv_notizy_item_note"
-            app:layout_constraintVertical_weight="1"></TextView>
+            app:layout_constraintVertical_weight="1">
+
+        </TextView>
 
 
         <TextView
@@ -51,7 +53,9 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_notizy_item_title"
-            app:layout_constraintVertical_weight="2"></TextView>
+            app:layout_constraintVertical_weight="2">
+
+        </TextView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
