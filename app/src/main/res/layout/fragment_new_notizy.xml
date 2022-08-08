@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.NewNotizyFragment"
+        android:layout_margin="16dp">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fb_save_notizy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:src="@android:drawable/ic_menu_save"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.95"
+            app:layout_constraintHorizontal_bias="0.95"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/color_chooser_cl"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/input_title"
+            app:layout_constraintVertical_weight="1">
+
+            <ImageView
+                android:id="@+id/color_picker_orange"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/color_picker_cyan"
+                android:src="@drawable/notes_color_orange" />
+
+            <ImageView
+                android:id="@+id/color_picker_cyan"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:layout_constraintStart_toEndOf="@id/color_picker_orange"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/color_picker_green"
+                android:src="@drawable/notes_color_cyan" />
+
+            <ImageView
+                android:id="@+id/color_picker_green"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:layout_constraintStart_toEndOf="@id/color_picker_cyan"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/color_picker_purple"
+                android:src="@drawable/notes_color_green" />
+
+            <ImageView
+                android:id="@+id/color_picker_purple"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:layout_constraintStart_toEndOf="@id/color_picker_green"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:src="@drawable/notes_color_purple" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <EditText
+            android:id="@+id/input_title"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:hint="Title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/color_chooser_cl"
+            app:layout_constraintBottom_toTopOf="@id/input_note"
+            app:layout_constraintVertical_weight="1"
+            android:paddingHorizontal="16dp"
+            android:gravity="top|left"
+            android:maxLines="3"/>
+
+
+
+        <EditText
+            android:id="@+id/input_note"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:hint="Note"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/input_title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_weight="5"
+            app:flow_verticalAlign="top"
+            android:paddingHorizontal="16dp"
+            android:gravity="top|left"></EditText>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

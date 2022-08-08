@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:layout_margin="16dp">
+
+
+    <TextView
+        android:id="@+id/tv_task_group_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="35dp"
+        android:textAlignment="center"
+        android:hint="Title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/done_tv"
+        android:background="@color/cyan"
+        />
+
+    <TextView
+        android:id="@+id/done_label"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_task_group_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/done_tv"
+        app:layout_constraintBottom_toTopOf="@id/open_label"
+        android:text="DONE"
+        android:textSize="20dp"
+        android:gravity="center|center"/>
+
+    <TextView
+        android:id="@+id/done_tv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_task_group_title"
+        app:layout_constraintStart_toEndOf="@id/done_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/open_tv"
+        android:hint="0"
+        android:textSize="20dp"
+        android:gravity="center|center"/>
+    <TextView
+        android:id="@+id/open_label"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/done_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/open_tv"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="OPEN"
+        android:textSize="20dp"
+        android:gravity="center|center"/>
+
+    <TextView
+        android:id="@+id/open_tv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/done_tv"
+        app:layout_constraintStart_toEndOf="@id/open_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center|center"
+        android:hint="0"
+        android:textSize="20dp"
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/delete_task_group_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:srcCompat="@android:drawable/ic_menu_delete"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintVertical_bias="0.95"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

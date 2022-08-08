@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/notizyFragment">
+
+    <fragment
+        android:id="@+id/scanFragment"
+        android:name="de.syntaxinsitut.myapplication.ui.ScanFragment"
+        android:label="fragment_scan"
+        tools:layout="@layout/fragment_scan" >
+        <action
+            android:id="@+id/action_scanFragment_to_newScanFragment"
+            app:destination="@id/newScanFragment"
+            app:popUpTo="@id/scanFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notizyFragment"
+        android:name="de.syntaxinsitut.myapplication.ui.NotizyFragment"
+        android:label="fragment_notizy"
+        tools:layout="@layout/fragment_notizy" >
+        <action
+            android:id="@+id/action_notizyFragment_to_newNotizyFragment"
+            app:destination="@id/newNotizyFragment"
+            app:popUpTo="@id/notizyFragment" />
+        <action
+            android:id="@+id/action_notizyFragment_to_editNotizyFragment"
+            app:destination="@id/editNotizyFragment"
+            app:popUpTo="@id/notizyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/taskFragment"
+        android:name="de.syntaxinsitut.myapplication.ui.TaskFragment"
+        android:label="fragment_task"
+        tools:layout="@layout/fragment_task" >
+        <action
+            android:id="@+id/action_taskFragment_to_newTaskFragment"
+            app:destination="@id/newTaskFragment"
+            app:popUpTo="@id/taskFragment" />
+        <action
+            android:id="@+id/action_taskFragment_to_taskDetailFragment"
+            app:destination="@id/taskDetailFragment"
+            app:popUpTo="@id/taskFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editNotizyFragment"
+        android:name="de.syntaxinsitut.myapplication.ui.EditNotizyFragment"
+        android:label="fragment_edit_notizy"
+        tools:layout="@layout/fragment_edit_notizy" />
+    <fragment
+        android:id="@+id/newNotizyFragment"
+        android:name="de.syntaxinsitut.myapplication.ui.NewNotizyFragment"
+        android:label="fragment_new_notizy"
+        tools:layout="@layout/fragment_new_notizy" />
+    <fragment
+        android:id="@+id/newScanFragment"
+        android:name="de.syntaxinsitut.myapplication.ui.NewScanFragment"
+        android:label="NewScanFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="de.syntaxinsitut.myapplication.ui.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/newTaskFragment"
+        android:name="de.syntaxinsitut.myapplication.ui.NewTaskFragment"
+        android:label="NewTaskFragment" />
+    <fragment
+        android:id="@+id/taskDetailFragment"
+        android:name="de.syntaxinsitut.myapplication.ui.TaskDetailFragment"
+        android:label="TaskDetailFragment" >
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </fragment>
+</navigation>

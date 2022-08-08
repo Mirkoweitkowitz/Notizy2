@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item android:title="Notizy"
+        android:id="@+id/notizyFragment"
+        android:icon="@drawable/notes"/>
+    <item android:title="Task"
+        android:id="@+id/taskFragment"
+        android:icon="@drawable/task"/>
+    <item android:title="Scan"
+        android:id="@+id/scanFragment"
+        android:icon="@drawable/scan"/>
+    <item android:title="Profile"
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/profile"/>
+</menu>
