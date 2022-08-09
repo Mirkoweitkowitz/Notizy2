@@ -9,9 +9,10 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import de.syntaxinsitut.myapplication.R
 import de.syntaxinsitut.myapplication.model.data.Notizy
+import de.syntaxinsitut.myapplication.model.data.Scan
 
 class ScanAdapter(
-    val dataset: List<Notizy>,
+    val dataset: List<Scan>,
     val context: Context
 ) : RecyclerView.Adapter<ScanAdapter.ScanViewHolder>() {
 
@@ -23,6 +24,7 @@ class ScanAdapter(
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onBindViewHolder(holder: ScanViewHolder, position: Int) {
+        val scan = dataset[position]
     }
 
     override fun getItemCount(): Int {

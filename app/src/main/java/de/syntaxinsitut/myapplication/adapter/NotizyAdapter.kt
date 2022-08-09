@@ -41,18 +41,26 @@ class NotizyAdapter(
     override fun onBindViewHolder(holder: NotizenViewHolder, position: Int) {
         val notizy = dataset[position]
 
+//        holt die daten aus dem holder und zeigt das eingegebene an
+
         holder.notizyTitle.text = notizy.title
         holder.notizyNote.text = notizy.note
+
+//        ändert die Farbe
         holder.cardView.setCardBackgroundColor(context.getColor(notizy.color))
 
+//        löscht den inhalt
         holder.noitzyDeleteButton.setOnClickListener {
             deleteCallback(notizy.id)
         }
+//Cardview navigieren
 
         holder.cardView.setOnClickListener {
             setCallback(notizy)
             holder.itemView.findNavController().navigate(NotizyFragmentDirections.actionNotizyFragmentToEditNotizyFragment())
         }
+
+//        Notizen per Drag and Drop verschieben
 
         holder.cardView.setOnTouchListener { view, motionEvent ->
             if (motionEvent.actionMasked == MotionEvent.ACTION_DOWN) {
@@ -69,6 +77,9 @@ class NotizyAdapter(
     override fun getItemCount(): Int {
         return dataset.size
     }
+
+//  das ist die Funktion um Drag and Drop auszuführen
+
 
     fun moveNotizyViewItem(from: Int, to: Int) {
         val notizyToMove: Notizy = dataset.get(from)

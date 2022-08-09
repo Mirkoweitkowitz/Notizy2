@@ -1,48 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    android:id="@+id/cv_notizy_item"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="300dp"
+    android:id="@+id/cv_notizy_item"
     android:layout_width="match_parent"
-    android:padding="16dp"
+    android:layout_height="200dp"
     android:layout_margin="4dp"
-    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.MaterialCardView.Cut"
-   >
+    android:padding="16dp"
+    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.MaterialCardView.Cut">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_notizy_item"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="8dp"
-        >
+        android:layout_margin="8dp">
+
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fb_delete_notizy_item"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginBottom="52dp"
             android:clickable="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@android:drawable/ic_menu_delete"
-            app:layout_constraintStart_toStartOf="parent"
+            android:scrollbarStyle="outsideInset"
+            android:visibility="visible"
+            app:fabCustomSize="24dp"
+            app:fabSize="normal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.95"
-            android:layout_marginBottom="4dp"
-            />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:rippleColor="#EEF1F1"
+            app:srcCompat="@android:drawable/ic_menu_delete"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <TextView
             android:id="@+id/tv_notizy_item_title"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/tv_notizy_item_note"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_weight="1">
 
         </TextView>
-
 
         <TextView
             android:id="@+id/tv_notizy_item_note"
