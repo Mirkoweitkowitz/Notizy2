@@ -57,4 +57,8 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch { dataBaseRepository.updateTask(task)
         }
     }
+
+    fun searchNotes(task: Task) {
+        viewModelScope.launch { dataBaseRepository.taskList }
+    }
 }

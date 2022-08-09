@@ -3,70 +3,70 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="300dp"
-    android:layout_margin="16dp">
+    android:layout_margin="16dp"
+    android:background="@color/material_dynamic_neutral70">
 
 
     <TextView
         android:id="@+id/tv_task_group_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="35dp"
-        android:textAlignment="center"
-        android:hint="Title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/done_tv"
         android:background="@color/cyan"
-        />
+        android:hint="Title"
+        android:textAlignment="center"
+        android:textSize="35dp"
+        app:layout_constraintBottom_toTopOf="@id/done_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/done_label"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_task_group_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/done_tv"
-        app:layout_constraintBottom_toTopOf="@id/open_label"
+        android:gravity="center|center"
         android:text="DONE"
         android:textSize="20dp"
-        android:gravity="center|center"/>
+        app:layout_constraintBottom_toTopOf="@id/open_label"
+        app:layout_constraintEnd_toStartOf="@id/done_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_task_group_title" />
 
     <TextView
         android:id="@+id/done_tv"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_task_group_title"
-        app:layout_constraintStart_toEndOf="@id/done_label"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/open_tv"
+        android:gravity="center|center"
         android:hint="0"
         android:textSize="20dp"
-        android:gravity="center|center"/>
+        app:layout_constraintBottom_toTopOf="@id/open_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/done_label"
+        app:layout_constraintTop_toBottomOf="@id/tv_task_group_title" />
+
     <TextView
         android:id="@+id/open_label"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/done_label"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/open_tv"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center|center"
         android:text="OPEN"
         android:textSize="20dp"
-        android:gravity="center|center"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/open_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/done_label" />
 
     <TextView
         android:id="@+id/open_tv"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/done_tv"
-        app:layout_constraintStart_toEndOf="@id/open_label"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:gravity="center|center"
         android:hint="0"
         android:textSize="20dp"
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/open_label"
+        app:layout_constraintTop_toBottomOf="@id/done_tv" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/delete_task_group_button"

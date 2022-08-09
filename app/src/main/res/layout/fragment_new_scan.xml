@@ -21,19 +21,26 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/scan_image_preview"
             app:layout_constraintVertical_weight="1"
-            android:hint="Title"></EditText>
+            android:hint="Title"
+            android:importantForAutofill="no">
+
+        </EditText>
 
         <ImageView
             android:id="@+id/scan_image_preview"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:alpha="0.3"
+            android:background="@drawable/notizy3"
+            android:scaleType="centerCrop"
             app:layout_constraintBottom_toTopOf="@id/save_scan_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/scan_title_input"
-            app:layout_constraintVertical_weight="10"
-            android:scaleType="centerCrop"></ImageView>
+            app:layout_constraintVertical_weight="10">
+
+        </ImageView>
 
         <Button
             android:id="@+id/save_scan_button"
@@ -47,7 +54,9 @@
             android:layout_marginTop="8dp"
             android:layout_marginHorizontal="8dp"
 
-            app:layout_constraintVertical_weight="1"></Button>
+            app:layout_constraintVertical_weight="1">
+
+        </Button>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
