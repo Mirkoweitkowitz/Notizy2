@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_notizyFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_notizyFragment_to_fireBaseFragment"
+            app:destination="@id/fireBaseFragment" />
     </fragment>
     <fragment
         android:id="@+id/taskFragment"

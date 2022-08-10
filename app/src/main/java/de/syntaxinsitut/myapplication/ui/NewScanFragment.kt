@@ -4,17 +4,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import de.syntaxinsitut.myapplication.R
 import de.syntaxinsitut.myapplication.databinding.FragmentNewScanBinding
+import de.syntaxinsitut.myapplication.model.repos.ScanRepository
 import de.syntaxinsitut.myapplication.model.viewmodels.ScanViewModel
 
 class NewScanFragment : Fragment() {
 
     private lateinit var binding: FragmentNewScanBinding
     private val viewModel: ScanViewModel by activityViewModels()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -39,7 +43,12 @@ class NewScanFragment : Fragment() {
         )
 
         binding.saveScanButton.setOnClickListener {
-            //TODO: SAVE IMAGE ON FIREBASE
+            if(binding.scanTitleInput.text.toString()!=""){
+                viewModel.upload(binding.scanTitleInput.text.toString())
+            } else {
+                Toast.makeText(requireContext(),"Titel",Toast.LENGTH_LONG).show()
+            }
+
         }
     }
 }

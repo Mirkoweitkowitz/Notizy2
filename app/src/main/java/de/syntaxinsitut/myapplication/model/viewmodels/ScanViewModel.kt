@@ -5,8 +5,11 @@ import android.graphics.Bitmap
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import de.syntaxinsitut.myapplication.model.repos.ScanRepository
 
 class ScanViewModel(application: Application) : AndroidViewModel(application) {
+
+    val repository = ScanRepository()
 
     private val _currentImageBitmap = MutableLiveData<Bitmap>()
     val currentImageBitmap: LiveData<Bitmap>
@@ -14,5 +17,8 @@ class ScanViewModel(application: Application) : AndroidViewModel(application) {
 
     fun setCurrentBitmap(bitmap: Bitmap) {
         _currentImageBitmap.value = bitmap
+    }
+    fun upload(fileName: String){
+        repository.upload(fileName,_currentImageBitmap.value!!)
     }
 }

@@ -1,9 +1,12 @@
 package de.syntaxinsitut.myapplication.model.repos
 
+import android.graphics.Bitmap
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import de.syntaxinsitut.myapplication.model.data.Scan
+import java.io.ByteArrayOutputStream
 
 class ScanRepository {
 
@@ -13,13 +16,17 @@ class ScanRepository {
 
     val scanImageDataBase = Firebase.firestore
 
-    /** fun upload(fileName: String, bitmap: Bitmap) {
+    fun upload(fileName: String, bitmap: Bitmap) {
 
-     val storageRef = FirebaseStorage.getInstance().getReference("images/$fileName")
-     val baos = ByteArrayOutputStream()
-     bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
-     val data = baos.toByteArray()
+        val storageRef = FirebaseStorage.getInstance().getReference("Scans/$fileName")
+        val baos = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        val data = baos.toByteArray()
 
-     storageRef.putBytes(data)
-     }**/
+        storageRef.putBytes(data).addOnSuccessListener {
+            println(it.metadata!!.reference)
+
+        }
+//gs://notizy-2f742.appspot.com/Scans/dennis
+    }
 }

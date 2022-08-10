@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import de.syntaxinsitut.myapplication.R
 import de.syntaxinsitut.myapplication.model.data.Task
@@ -21,6 +23,7 @@ class TaskAdapter(
     inner class TaskViewHolder(itemview: View) : RecyclerView.ViewHolder(itemview) {
         val checkBox = itemview.findViewById<CheckBox>(R.id.task_check_box)
         val title = itemview.findViewById<TextView>(R.id.detail_task_title_tv)
+        val back = itemview.findViewById<ImageButton>(R.id.imgBackButton)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
@@ -36,6 +39,10 @@ class TaskAdapter(
         holder.checkBox.setOnCheckedChangeListener { compoundButton, b ->
             task.done = b
             updateCallback(task)
+        }
+
+        holder.back.setOnClickListener{
+            holder.itemView.findNavController().navigateUp()
         }
     }
 
