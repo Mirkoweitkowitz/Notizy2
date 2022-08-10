@@ -20,6 +20,8 @@ class ScanRepository {
 
     val scanImageDataBase = FirebaseFirestore.getInstance()
 
+
+//  lädt immer wieder neu von Firebase
     init {
         scanImageDataBase.collection("Scans")
             .addSnapshotListener { value, error ->
@@ -41,6 +43,8 @@ class ScanRepository {
             }
     }
 
+//    lädt da image in den Firebase Store
+
     fun upload(fileName: String, bitmap: Bitmap) {
 
         val storageRef = FirebaseStorage.getInstance().getReference("Scans/$fileName")
@@ -60,22 +64,8 @@ class ScanRepository {
         }
     }
 
-    fun getAllScans() {
-        scanImageDataBase.collection("Scans")
-            .get()
-            .addOnSuccessListener { result ->
-                val mutableScans = mutableListOf<Scan>()
-                for (document in result) {
-                    val scan = Scan(
-                        document.data.get("title") as String,
-                        document.data.get("uri") as String,
-                    )
-                    mutableScans.add(scan)
-                }
 
-                _scanList.value = mutableScans
-            }
-    }
+// lädt das image von Firebase
 
     fun downloadImage(refrence: String, imageView: ImageView, context: Context) {
         val gsReference = FirebaseStorage.getInstance().getReferenceFromUrl(refrence)

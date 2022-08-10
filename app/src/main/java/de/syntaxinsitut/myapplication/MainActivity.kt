@@ -19,6 +19,7 @@ import de.syntaxinsitut.myapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navigationView: NavigationView
     private lateinit var toggle: ActionBarDrawerToggle
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +42,9 @@ class MainActivity : AppCompatActivity() {
         toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
+
+
+//        spricht die NavigationsView an
 
         binding.navigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
@@ -99,16 +104,6 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        if (toggle.onOptionsItemSelected(item)) {
-//            return true
-//        }
-//        return super.onOptionsItemSelected(item)
-//    }
-//
-//    override fun onBackPressed() {
-//
-//        navController.navigateUp()
-//    }
+
 
 }

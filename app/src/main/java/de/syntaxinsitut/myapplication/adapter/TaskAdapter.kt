@@ -12,10 +12,11 @@ import androidx.annotation.RequiresApi
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import de.syntaxinsitut.myapplication.R
+import de.syntaxinsitut.myapplication.model.data.Notizy
 import de.syntaxinsitut.myapplication.model.data.Task
 
 class TaskAdapter(
-    val dataset: List<Task>,
+    private var dataset: List<Task>,
     val context: Context,
     val updateCallback: (Task) -> Unit
 ) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
@@ -49,4 +50,8 @@ class TaskAdapter(
     override fun getItemCount(): Int {
         return dataset.size
     }
+
+//    fun setData(arrNotesList: List<Notizy>) {
+//        dataset = arrNotesList as List<Task>,
+//    }
 }
