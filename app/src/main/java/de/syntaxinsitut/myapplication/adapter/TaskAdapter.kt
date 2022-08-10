@@ -21,6 +21,8 @@ class TaskAdapter(
     val updateCallback: (Task) -> Unit
 ) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
+//    innere klasse des ViewHolders
+
     inner class TaskViewHolder(itemview: View) : RecyclerView.ViewHolder(itemview) {
         val checkBox = itemview.findViewById<CheckBox>(R.id.task_check_box)
         val title = itemview.findViewById<TextView>(R.id.detail_task_title_tv)
@@ -35,12 +37,15 @@ class TaskAdapter(
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         val task = dataset[position]
 
+// holt die checkBox und setzt sie auf done (erledigt) oder task (noch zu erledigen)
+
         holder.checkBox.isChecked = task.done
         holder.checkBox.text = task.task
         holder.checkBox.setOnCheckedChangeListener { compoundButton, b ->
             task.done = b
             updateCallback(task)
         }
+// zurück zum vorherigen fragment
 
         holder.back.setOnClickListener{
             holder.itemView.findNavController().navigateUp()
