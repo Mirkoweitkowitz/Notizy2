@@ -1,6 +1,7 @@
 package de.syntaxinsitut.myapplication.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,8 +47,13 @@ class TaskFragment : Fragment() {
         vm.taskList.observe(
             viewLifecycleOwner,
             Observer {
-                adapter.taskList = it
-                adapter.notifyDataSetChanged()
+                try {
+                    adapter.taskList = it
+                    adapter.notifyDataSetChanged()
+                }catch (ex:Exception){
+                    Log.e("TaskFragment",ex.toString())
+                }
+
             }
 
         )

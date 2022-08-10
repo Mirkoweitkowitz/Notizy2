@@ -13,6 +13,6 @@
         android:id="@+id/scanFragment"
         android:icon="@drawable/scan"/>
     <item android:title="Profile"
-        android:id="@+id/profileFragment"
+        android:id="@+id/fireBaseFragment"
         android:icon="@drawable/profile"/>
 </menu>

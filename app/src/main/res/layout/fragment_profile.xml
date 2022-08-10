@@ -21,7 +21,9 @@
             app:layout_constraintTop_toTopOf="parent"
             android:src="@drawable/fui_ic_github_white_24dp"
             app:roundPercent="1"
-            android:background="@color/black"></androidx.constraintlayout.utils.widget.ImageFilterView>
+            android:background="@color/black">
+
+        </androidx.constraintlayout.utils.widget.ImageFilterView>
 
         <TextView
             android:id="@+id/username"
@@ -32,7 +34,9 @@
             app:layout_constraintBottom_toTopOf="@+id/materialDivider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/profile_iv"
-            app:layout_constraintTop_toTopOf="parent"></TextView>
+            app:layout_constraintTop_toTopOf="parent">
+
+        </TextView>
 
         <TextView
             android:layout_width="wrap_content"
@@ -42,7 +46,9 @@
             app:layout_constraintBottom_toTopOf="@+id/materialDivider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/profile_iv"
-            app:layout_constraintTop_toBottomOf="@id/username"></TextView>
+            app:layout_constraintTop_toBottomOf="@id/username">
+
+        </TextView>
 
         <com.google.android.material.divider.MaterialDivider
             android:id="@+id/materialDivider"
@@ -50,10 +56,12 @@
             android:layout_height="@dimen/_5sdp"
             android:layout_marginVertical="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/profile_iv"></com.google.android.material.divider.MaterialDivider>
+            app:layout_constraintTop_toBottomOf="@id/profile_iv">
+
+        </com.google.android.material.divider.MaterialDivider>
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imgProfil"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="23dp"
@@ -62,6 +70,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/materialDivider"
             app:srcCompat="@drawable/notizy3" />
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import de.syntaxinsitut.myapplication.api.UserApi
 import de.syntaxinsitut.myapplication.model.data.Notizy
 import de.syntaxinsitut.myapplication.model.database.getDatabase
 import de.syntaxinsitut.myapplication.model.repos.DataBaseRepository
@@ -13,7 +14,7 @@ import kotlinx.coroutines.launch
 class NoteViewModel(application: Application) : AndroidViewModel(application) {
 
     val database = getDatabase(application)
-    val dataBaseRepository = DataBaseRepository(database)
+    val dataBaseRepository = DataBaseRepository(database,UserApi)
     val notizies = dataBaseRepository.notizyList
 
     private val _pickedColor = MutableLiveData<Int>()

@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import de.syntaxinsitut.myapplication.api.UserApi
 import de.syntaxinsitut.myapplication.model.data.Task
 import de.syntaxinsitut.myapplication.model.data.TaskGroup
 import de.syntaxinsitut.myapplication.model.database.getDatabase
@@ -19,7 +20,7 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
         get() = _pickedColor
 
     val database = getDatabase(application)
-    val dataBaseRepository = DataBaseRepository(database)
+    val dataBaseRepository = DataBaseRepository(database,UserApi)
 
     lateinit var insertTaskGroup: Job
 

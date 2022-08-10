@@ -3,4 +3,24 @@
     <string name="open">OPEN</string>
     <string name="close">CLOSE</string>
 
+    <!--to toggle the open close button
+      of the navigation drawer-->
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+
+    <string name="Favoriten">Home</string>
+    <string name="Archive">Ordner</string>
+    <string name="Notizen">Notizen</string>
+    <string name="Dokumente">Einstellung</string>
+    <string name="menu_share">Teilen</string>
+    <string name="scanner">Scanner</string>
+    <string name="Teilen">Scanner</string>
+
+    <!--    Cammera-->
+    <string name="ok_label">OK</string>
+    <string name="error_label">Error</string>
+    <string name="photo_saved">Photo has been saved to Camera</string>
+    <string name="next" />
+    <string name="previous" />
+
 </resources>

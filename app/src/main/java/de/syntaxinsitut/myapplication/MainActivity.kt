@@ -1,10 +1,12 @@
 package de.syntaxinsitut.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
@@ -39,6 +41,32 @@ class MainActivity : AppCompatActivity() {
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
+        binding.navigationView.setNavigationItemSelectedListener {
+            when (it.itemId) {
+
+                R.id.nav_share -> {
+                    var detailText = ""
+                    println("Teilen Fragment clicked")
+                    val intent = Intent.createChooser(
+                        Intent()
+                            .apply {
+                                action = Intent.ACTION_SEND
+                                putExtra(
+                                    Intent.EXTRA_TEXT,
+                                    "Ich möchte die Notiz mit Dir  $detailText Teilen :)"
+                                )
+                                type = "text/plain"
+                            }, null
+                    )
+                    startActivity(intent)
+                    true
+                }
+
+            }
+            true
+        }
+
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val navHostFragment =
@@ -49,16 +77,38 @@ class MainActivity : AppCompatActivity() {
         navigationView.setupWithNavController(navController)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (toggle.onOptionsItemSelected(item)) {
-            return true
-        }
-        return super.onOptionsItemSelected(item)
-    }
 
     override fun onBackPressed() {
-
-        navController.navigateUp()
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }
     }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        super.onOptionsItemSelected(item)
+        return when (item.itemId) {
+            android.R.id.home -> {
+                drawerLayout.openDrawer(GravityCompat.START)
+                println("CLICK:!" + item)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+
+        }
+    }
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        if (toggle.onOptionsItemSelected(item)) {
+//            return true
+//        }
+//        return super.onOptionsItemSelected(item)
+//    }
+//
+//    override fun onBackPressed() {
+//
+//        navController.navigateUp()
+//    }
 
 }

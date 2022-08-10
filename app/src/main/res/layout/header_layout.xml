@@ -26,6 +26,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:textSize="30dp"
-        android:hint="user_name"></TextView>
+        android:hint="user_name">
+
+    </TextView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
