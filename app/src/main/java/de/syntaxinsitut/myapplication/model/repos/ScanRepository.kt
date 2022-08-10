@@ -1,9 +1,13 @@
 package de.syntaxinsitut.myapplication.model.repos
 
+import android.content.Context
 import android.graphics.Bitmap
+import android.widget.ImageView
 import androidx.lifecycle.MutableLiveData
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
+import coil.load
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import de.syntaxinsitut.myapplication.model.data.Scan
 import java.io.ByteArrayOutputStream
@@ -14,7 +18,28 @@ class ScanRepository {
     val scanList: MutableLiveData<List<Scan>>
         get() = _scanList
 
-    val scanImageDataBase = Firebase.firestore
+    val scanImageDataBase = FirebaseFirestore.getInstance()
+
+    init {
+        scanImageDataBase.collection("Scans")
+            .addSnapshotListener { value, error ->
+                val mutableScans = mutableListOf<Scan>()
+                for (document in value!!) {
+                    try {
+                        val scan = Scan(
+                            document.data.get("title") as String,
+                            document.data.get("uri") as String,
+                        )
+                        mutableScans.add(scan)
+                    }catch (e: Exception){
+                        continue
+                    }
+
+                }
+
+                _scanList.value = mutableScans
+            }
+    }
 
     fun upload(fileName: String, bitmap: Bitmap) {
 
@@ -24,9 +49,48 @@ class ScanRepository {
         val data = baos.toByteArray()
 
         storageRef.putBytes(data).addOnSuccessListener {
-            println(it.metadata!!.reference)
-
+            val scan = Scan(fileName, it.metadata!!.reference.toString())
+            scanImageDataBase.collection("Scans")
+                .add(
+                    hashMapOf(
+                        "title" to scan.title,
+                        "uri" to scan.uri
+                    )
+                )
         }
-//gs://notizy-2f742.appspot.com/Scans/dennis
+    }
+
+    fun getAllScans() {
+        scanImageDataBase.collection("Scans")
+            .get()
+            .addOnSuccessListener { result ->
+                val mutableScans = mutableListOf<Scan>()
+                for (document in result) {
+                    val scan = Scan(
+                        document.data.get("title") as String,
+                        document.data.get("uri") as String,
+                    )
+                    mutableScans.add(scan)
+                }
+
+                _scanList.value = mutableScans
+            }
+    }
+
+    fun downloadImage(refrence: String, imageView: ImageView, context: Context) {
+        val gsReference = FirebaseStorage.getInstance().getReferenceFromUrl(refrence)
+        println(gsReference)
+
+        gsReference.getDownloadUrl().addOnSuccessListener(
+            OnSuccessListener<Any> { uri ->
+                imageView.load(uri.toString()) {
+                    crossfade(true)
+                }
+            }
+        ).addOnFailureListener(
+            OnFailureListener {
+                // Handle any errors
+            }
+        )
     }
 }

@@ -13,8 +13,10 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import de.syntaxinsitut.myapplication.R
+import de.syntaxinsitut.myapplication.adapter.ScanAdapter
 import de.syntaxinsitut.myapplication.databinding.FragmentScanBinding
 import de.syntaxinsitut.myapplication.model.viewmodels.ScanViewModel
 
@@ -50,6 +52,15 @@ class ScanFragment : Fragment() {
             }
             true
         }
+
+        viewModel.scanList.observe(
+            viewLifecycleOwner,
+            Observer {
+                println(it)
+                val adapter = ScanAdapter(it, requireContext(), viewModel::downloadImage)
+                binding.scansRecyclerView.adapter = adapter
+            }
+        )
     }
 
     @RequiresApi(Build.VERSION_CODES.O)

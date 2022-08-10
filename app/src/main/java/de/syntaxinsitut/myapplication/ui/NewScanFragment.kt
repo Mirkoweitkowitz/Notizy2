@@ -8,16 +8,15 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import de.syntaxinsitut.myapplication.R
+import androidx.navigation.fragment.findNavController
 import de.syntaxinsitut.myapplication.databinding.FragmentNewScanBinding
-import de.syntaxinsitut.myapplication.model.repos.ScanRepository
 import de.syntaxinsitut.myapplication.model.viewmodels.ScanViewModel
+import okhttp3.internal.wait
 
 class NewScanFragment : Fragment() {
 
     private lateinit var binding: FragmentNewScanBinding
     private val viewModel: ScanViewModel by activityViewModels()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,12 +42,12 @@ class NewScanFragment : Fragment() {
         )
 
         binding.saveScanButton.setOnClickListener {
-            if(binding.scanTitleInput.text.toString()!=""){
+            if (binding.scanTitleInput.text.toString() != "") {
                 viewModel.upload(binding.scanTitleInput.text.toString())
+                findNavController().navigateUp()
             } else {
-                Toast.makeText(requireContext(),"Titel",Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), "Titel", Toast.LENGTH_LONG).show()
             }
-
         }
     }
 }
