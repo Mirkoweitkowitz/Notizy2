@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import de.syntaxinsitut.myapplication.R
 import de.syntaxinsitut.myapplication.databinding.FragmentLoginUserBinding
+import de.syntaxinsitut.myapplication.databinding.FragmentSignupBinding
 import de.syntaxinsitut.myapplication.model.viewmodels.FireBaseViewModel
 
 
@@ -21,14 +22,14 @@ class SignUpFragment: Fragment() {
 
     private val viewModel: FireBaseViewModel by activityViewModels()
 
-    private lateinit var binding: FragmentLoginUserBinding
+    private lateinit var binding: FragmentSignupBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login_user, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_signup, container, false)
 
         return binding.root
     }
@@ -36,10 +37,10 @@ class SignUpFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.cancelButton.setOnClickListener{
+        binding.signupCancelButton.setOnClickListener{
             findNavController().navigateUp()
         }
-        binding.signupButton.setOnClickListener{
+        binding.signupSignupButton.setOnClickListener{
             signUp()
         }
 
@@ -55,8 +56,8 @@ class SignUpFragment: Fragment() {
 
     private fun signUp() {
 
-        val email = binding.emailEdit.text.toString()
-        val password = binding.passwordEdit.text.toString()
+        val email = binding.signupMail.text.toString()
+        val password = binding.signupPassword.text.toString()
 
         if (!email.isNullOrEmpty() && !password.isNullOrEmpty()) {
             viewModel.signUp(email, password)

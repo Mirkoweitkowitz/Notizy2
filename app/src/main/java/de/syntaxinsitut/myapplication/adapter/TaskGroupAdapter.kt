@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -30,6 +31,7 @@ class TaskGroupAdapter(
         val openTV = itemview.findViewById<TextView>(R.id.open_tv)
         val openLabel = itemview.findViewById<TextView>(R.id.open_label)
         val deleteButton = itemview.findViewById<FloatingActionButton>(R.id.delete_task_group_button)
+        val cl = itemview.findViewById<ConstraintLayout>(R.id.cl_task_group)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
@@ -60,10 +62,12 @@ class TaskGroupAdapter(
         }
 
         colorDrawable.color = (context.getColor(taskGroup.color))
-        holder.openLabel.background = colorDrawable
-        holder.openTV.background = colorDrawable
-        holder.doneTV.background = colorDrawable
-        holder.doneLabel.background = colorDrawable
+//        holder.openLabel.background = colorDrawable
+//        holder.openTV.background = colorDrawable
+//        holder.doneTV.background = colorDrawable
+//        holder.doneLabel.background = colorDrawable
+
+        holder.cl.background = colorDrawable
 
         holder.titleTV.text = taskGroup.title
 
@@ -74,7 +78,7 @@ class TaskGroupAdapter(
             deleteCallback(taskGroup.id)
         }
 
-        holder.titleTV.setOnClickListener {
+        holder.cl.setOnClickListener {
             holder.itemView.findNavController().navigate(TaskFragmentDirections.actionTaskFragmentToTaskDetailFragment(taskGroup.id, taskGroup.title))
         }
     }

@@ -13,7 +13,6 @@ import androidx.navigation.fragment.findNavController
 import de.syntaxinsitut.myapplication.R
 import de.syntaxinsitut.myapplication.adapter.UserAdapter
 import de.syntaxinsitut.myapplication.databinding.FragmentUserBinding
-import de.syntaxinsitut.myapplication.model.data.User
 import de.syntaxinsitut.myapplication.model.viewmodels.UserViewModel
 
 class UserFragment : Fragment(){
@@ -31,7 +30,7 @@ class UserFragment : Fragment(){
         viewModel.loadData()
         // Inflate the layout for this fragment
 
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_login_user, container, false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_user, container, false)
         return binding.root
     }
 
@@ -40,6 +39,7 @@ class UserFragment : Fragment(){
 
         val userList = binding.userList
         val addUser = binding.addFab
+        val bback = binding.imgBackBu
 
 
 
@@ -47,7 +47,11 @@ class UserFragment : Fragment(){
         userList.setHasFixedSize(true)
 
         addUser.setOnClickListener {
-            findNavController().navigate(R.id.action_fireBaseFragment_to_userFragment)
+            findNavController().navigate(R.id.action_userFragment_to_signUpFragment)
+        }
+
+        bback.setOnClickListener{
+            findNavController().navigateUp()
         }
 
         viewModel.users.observe(

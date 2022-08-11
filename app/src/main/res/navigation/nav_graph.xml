@@ -32,8 +32,8 @@
             android:id="@+id/action_notizyFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
         <action
-            android:id="@+id/action_notizyFragment_to_fireBaseFragment"
-            app:destination="@id/fireBaseFragment" />
+            android:id="@+id/action_notizyFragment_to_userFragment"
+            app:destination="@id/userFragment" />
     </fragment>
     <fragment
         android:id="@+id/taskFragment"
@@ -92,14 +92,17 @@
         android:name="de.syntaxinsitut.myapplication.firebase.UserFragment"
         android:label="UserFragment" >
         <action
-            android:id="@+id/action_userFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-        <action
             android:id="@+id/action_userFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
         <action
+            android:id="@+id/action_userFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
             android:id="@+id/action_userFragment_to_fireBaseFragment"
             app:destination="@id/fireBaseFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -108,29 +111,11 @@
         <action
             android:id="@+id/action_loginFragment_to_userFragment"
             app:destination="@id/userFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_fireBaseFragment"
-            app:destination="@id/fireBaseFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_signUpFragment2"
-            app:destination="@id/signUpFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_fireBaseFragment2"
-            app:destination="@id/fireBaseFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_userFragment2"
-            app:destination="@id/userFragment" />
     </fragment>
     <fragment
         android:id="@+id/fireBaseFragment"
         android:name="de.syntaxinsitut.myapplication.firebase.FireBaseFragment"
         android:label="FireBaseFragment" >
-        <action
-            android:id="@+id/action_fireBaseFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
         <action
             android:id="@+id/action_fireBaseFragment_to_userFragment"
             app:destination="@id/userFragment" />
@@ -139,9 +124,6 @@
         android:id="@+id/signUpFragment"
         android:name="de.syntaxinsitut.myapplication.firebase.SignUpFragment"
         android:label="SignUpFragment" >
-        <action
-            android:id="@+id/action_signUpFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
         <action
             android:id="@+id/action_signUpFragment_to_userFragment"
             app:destination="@id/userFragment" />

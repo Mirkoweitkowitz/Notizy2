@@ -11,6 +11,9 @@ import de.syntaxinsitut.myapplication.adapter.TaskAdapter
 import de.syntaxinsitut.myapplication.databinding.FragmentTaskDetailBinding
 import de.syntaxinsitut.myapplication.model.viewmodels.TaskViewModel
 
+
+// das TaskDetailFragment überwacht und sorgt dafür das die Details angezeigt werden
+
 class TaskDetailFragment : Fragment() {
 
     private lateinit var binding: FragmentTaskDetailBinding
@@ -37,6 +40,8 @@ class TaskDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+// Überwacht die TaskListe
 
         viewModel.taskList.observe(
             viewLifecycleOwner,

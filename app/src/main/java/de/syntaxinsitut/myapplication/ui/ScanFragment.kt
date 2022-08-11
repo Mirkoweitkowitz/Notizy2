@@ -20,6 +20,11 @@ import de.syntaxinsitut.myapplication.adapter.ScanAdapter
 import de.syntaxinsitut.myapplication.databinding.FragmentScanBinding
 import de.syntaxinsitut.myapplication.model.viewmodels.ScanViewModel
 
+
+
+// das ScanFragment
+
+
 class ScanFragment : Fragment() {
 
     private lateinit var binding: FragmentScanBinding

@@ -5,13 +5,15 @@
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.29074074074074074" />
         <entry key="app/src/main/res/layout/fragment_edit_notizy.xml" value="0.49635416666666665" />
-        <entry key="app/src/main/res/layout/fragment_login_user.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_login_user.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_new_notizy.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_new_scan.xml" value="0.1455223880597015" />
         <entry key="app/src/main/res/layout/fragment_new_task.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_new_user.xml" value="0.4953125" />
         <entry key="app/src/main/res/layout/fragment_notizy.xml" value="0.2459546925566343" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.2984375" />
         <entry key="app/src/main/res/layout/fragment_scan.xml" value="0.18640776699029127" />
+        <entry key="app/src/main/res/layout/fragment_signup.xml" value="0.4203703703703704" />
         <entry key="app/src/main/res/layout/fragment_task.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_task_detail.xml" value="0.20925925925925926" />
         <entry key="app/src/main/res/layout/fragment_user.xml" value="0.4953125" />

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -15,6 +16,7 @@ import de.syntaxinsitut.myapplication.adapter.TaskGroupAdapter
 import de.syntaxinsitut.myapplication.databinding.FragmentTaskBinding
 import de.syntaxinsitut.myapplication.model.data.Notizy
 import de.syntaxinsitut.myapplication.model.data.Task
+import de.syntaxinsitut.myapplication.model.data.TaskGroup
 import de.syntaxinsitut.myapplication.model.viewmodels.TaskViewModel
 import java.util.*
 import kotlin.collections.ArrayList
@@ -24,7 +26,7 @@ class TaskFragment : Fragment() {
     private lateinit var binding: FragmentTaskBinding
     private val vm: TaskViewModel by activityViewModels()
     private lateinit var adapter: TaskGroupAdapter
-//    var notes = List<Task>(),
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +47,7 @@ class TaskFragment : Fragment() {
         vm.taskGroupList.observe(
             viewLifecycleOwner,
             Observer {
-                adapter = TaskGroupAdapter(it, requireContext(), vm::deleteById, vm.taskList.value)
+                adapter = generateTaskGroupAdapter(it.toMutableList())
                 binding.taskRecyclerView.adapter = adapter
             }
         )
@@ -69,27 +71,27 @@ class TaskFragment : Fragment() {
         binding.newTaskButton.setOnClickListener {
             findNavController().navigate(R.id.newTaskFragment)
         }
+        binding.taskEditText.addTextChangedListener {
+            if(it.toString().isNullOrEmpty()){
+                val adapter= generateTaskGroupAdapter(vm.taskGroupList.value!!.toMutableList())
+                binding.taskRecyclerView.adapter = adapter
+            } else {
+                val filter = it.toString()
+                val filterd = vm.taskGroupList.value!!.toMutableList().filter {
+                    filter.uppercase() in it.title.uppercase()
+                }
 
-//        binding.task_edit_text.setOnQueryTextListener(object :
-//            SearchView.OnQueryTextListener,
-//            androidx.appcompat.widget.SearchView.OnQueryTextListener {
-//            override fun onQueryTextSubmit(p0: String?): Boolean {
-//                return true
-//            }
-//
-//            override fun onQueryTextChange(p0: String?): Boolean {
-//
-//                val tempArr = List<Task>()
-//
-//                for (arr in notes) {
-//                    if (arr.title!!.toLowerCase(Locale.getDefault()).contains(p0.toString())) {
-//                        tempArr.add(arr)
-//                    }
-//                }
-//                adapter.setData(tempArr)
-//                adapter.notifyDataSetChanged()
-//                return true
-//            }
-//        })
+                val adapter = generateTaskGroupAdapter(filterd.toMutableList())
+                binding.taskRecyclerView.adapter = adapter
+            }
+
+        }
+
+    }
+
+    fun generateTaskGroupAdapter(dataset:MutableList<TaskGroup>): TaskGroupAdapter{
+
+        return TaskGroupAdapter(dataset,requireContext(), vm::deleteById, vm.taskList.value)
+
     }
 }

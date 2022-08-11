@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -15,8 +16,10 @@ import androidx.recyclerview.widget.RecyclerView
 import de.syntaxinsitut.myapplication.OnDragStartListener
 import de.syntaxinsitut.myapplication.R
 import de.syntaxinsitut.myapplication.adapter.NotizyAdapter
+import de.syntaxinsitut.myapplication.adapter.TaskGroupAdapter
 import de.syntaxinsitut.myapplication.databinding.FragmentNotizyBinding
 import de.syntaxinsitut.myapplication.model.data.Notizy
+import de.syntaxinsitut.myapplication.model.data.TaskGroup
 import de.syntaxinsitut.myapplication.model.viewmodels.NoteViewModel
 
 class NotizyFragment : Fragment() {
@@ -44,6 +47,37 @@ class NotizyFragment : Fragment() {
         }
 
 
+
+
+        viewModel.notizies.observe(
+            viewLifecycleOwner,
+            Observer {
+                val adapter = generateNotizyAdapter(it.toMutableList())
+                binding.notizyRecyclerView.adapter = adapter
+            }
+        )
+
+        binding.notizyRecyclerView.hasFixedSize()
+
+        binding.notesEditText.addTextChangedListener {
+            if(it.toString().isNullOrEmpty()){
+                val adapter= generateNotizyAdapter(viewModel.notizies.value!!.toMutableList())
+                binding.notizyRecyclerView.adapter = adapter
+            } else {
+                val filter = it.toString()
+                val filterd = viewModel.notizies.value!!.toMutableList().filter {
+                    filter.uppercase() in it.title.uppercase()
+                            || filter.uppercase() in it.note.uppercase()
+                }
+
+                val adapter = generateNotizyAdapter(filterd.toMutableList())
+                binding.notizyRecyclerView.adapter = adapter
+            }
+
+        }
+    }
+
+    fun generateNotizyAdapter(dataset:MutableList<Notizy>): NotizyAdapter {
         val callback = object : ItemTouchHelper.SimpleCallback(
             ItemTouchHelper.UP or ItemTouchHelper.DOWN or
                     ItemTouchHelper.START or ItemTouchHelper.END, 0
@@ -83,20 +117,12 @@ class NotizyFragment : Fragment() {
         val helper: ItemTouchHelper = ItemTouchHelper(callback)
         helper.attachToRecyclerView(binding.notizyRecyclerView)
 
-
-        viewModel.notizies.observe(
-            viewLifecycleOwner,
-            Observer {
-                val adapter = NotizyAdapter(it as MutableList<Notizy>, requireContext(),  viewModel::deleteById, viewModel::setCurrentNotizy,object :
-                    OnDragStartListener {
-                    override fun onDragStart(holder: NotizyAdapter.NotizenViewHolder?) {
-                        helper.startDrag(holder!!)
-                    }
-                })
-                binding.notizyRecyclerView.adapter = adapter
+        return NotizyAdapter(dataset,requireContext(), viewModel::deleteById, viewModel::setCurrentNotizy,object :
+            OnDragStartListener {
+            override fun onDragStart(holder: NotizyAdapter.NotizenViewHolder?) {
+                helper.startDrag(holder!!)
             }
-        )
+        })
 
-        binding.notizyRecyclerView.hasFixedSize()
     }
 }

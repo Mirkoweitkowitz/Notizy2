@@ -56,7 +56,5 @@ class TaskAdapter(
         return dataset.size
     }
 
-//    fun setData(arrNotesList: List<Notizy>) {
-//        dataset = arrNotesList as List<Task>,
-//    }
+
 }
