@@ -22,12 +22,12 @@
 
             <item android:title="Login"
                 android:icon="@drawable/profile"
-                android:id="@+id/fireBaseFragment"/>
+                android:id="@+id/fireBaseFragment">
 
-                <item
-                    android:id="@+id/nav_share"
-                    android:icon="@drawable/ic_baseline_share_24"
-                    android:title="@string/menu_share">
+<!--                <item-->
+<!--                    android:id="@+id/nav_share"-->
+<!--                    android:icon="@drawable/ic_baseline_share_24"-->
+<!--                    android:title="@string/menu_share">-->
             </item>
 
         </menu>
