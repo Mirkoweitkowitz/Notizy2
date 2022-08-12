@@ -44,32 +44,7 @@ class MainActivity : AppCompatActivity() {
         toggle.syncState()
 
 
-//        spricht die NavigationsView an
 
-//        binding.navigationView.setNavigationItemSelectedListener {
-//            when (it.itemId) {
-//
-//                R.id.nav_share -> {
-//                    var detailText = ""
-//                    println("Teilen Fragment clicked")
-//                    val intent = Intent.createChooser(
-//                        Intent()
-//                            .apply {
-//                                action = Intent.ACTION_SEND
-//                                putExtra(
-//                                    Intent.EXTRA_TEXT,
-//                                    "Ich möchte die Notiz mit Dir  $detailText Teilen :)"
-//                                )
-//                                type = "text/plain"
-//                            }, null
-//                    )
-//                    startActivity(intent)
-//                    true
-//                }
-//
-//            }
-//            true
-//        }
 
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

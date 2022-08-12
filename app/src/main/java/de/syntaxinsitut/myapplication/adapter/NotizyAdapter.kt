@@ -1,14 +1,17 @@
 package de.syntaxinsitut.myapplication.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat.startActivity
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
@@ -31,6 +34,7 @@ class NotizyAdapter(
         val notizyNote = itemview.findViewById<TextView>(R.id.tv_notizy_item_note)
         val noitzyDeleteButton = itemview.findViewById<FloatingActionButton>(R.id.fb_delete_notizy_item)
         val cardView = itemview.findViewById<MaterialCardView>(R.id.cv_notizy_item)
+        val share = itemview.findViewById<ImageButton>(R.id.nav_share)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotizenViewHolder {
@@ -71,6 +75,32 @@ class NotizyAdapter(
                 }
             }
             false
+        }
+
+        //        spricht die nav_share an
+
+        holder.share.setOnClickListener {
+            when (it) {
+
+                holder.share -> {
+                    var detailText = ""
+                    println("Teilen Fragment clicked")
+                    val intent = Intent.createChooser(
+                        Intent()
+                            .apply {
+                                action = Intent.ACTION_SEND
+                                putExtra(
+                                    Intent.EXTRA_TEXT,
+                                    "Ich möchte die Notiz mit Dir  $detailText Teilen :)"
+                                )
+                                type = "text/plain"
+                            }, null
+                    )
+
+                }
+
+            }
+            true
         }
     }
 
